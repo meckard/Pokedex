@@ -1,0 +1,27 @@
+ul.navBar {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--text);
+    padding: 20px;
+    margin: 0;
+    box-shadow: 2px 5px 5px var(--border);
+}
+
+ul.navBar li a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 800;
+    font-size: 2rem;
+    background-color: var(--background);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px var(--background);
+    border: 3px solid var(--border);
+}
+
+ul.navBar li a:hover {
+    background-color: var(--border);
+    transition: background-color 0.20s;
+}

@@ -1,0 +1,49 @@
+.pod {
+    border: 3px solid var(--border);
+    width:50%;
+    margin: 5% 25% 25% 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--text);
+    color: var(--background);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px var(--border);
+}
+
+.pod h2 {
+    text-decoration: underline;
+}
+
+.pod ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.shiny {
+    height: 50px;
+    width: 50px
+}
+
+.sprites li {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.regularSprite  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shinySprite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+}

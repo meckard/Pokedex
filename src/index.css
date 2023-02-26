@@ -1,0 +1,11 @@
+:root {
+  --background: #0C2231;
+  --text: #46A46C;
+  --border: #5B2C06;
+
+
+  background-color: var(--background);
+  color: var(--text);
+  text-align: center;
+  margin: 0;
+}
