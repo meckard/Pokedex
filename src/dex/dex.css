@@ -1,0 +1,31 @@
+.pokemonCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 150px;
+    background-color: var(--text);
+    color: var(--background);
+    margin: 20px;
+    padding: 40px;
+    border: 3px solid var(--border);
+    box-shadow: 2px 5px 5px var(--border);
+}
+
+.pokemonCard img {
+    height: 150px;
+    width: 150px;
+}
+
+.dex {
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
+    flex-wrap: wrap;
+}
+
+.types p{
+    font-size: 30px;
+    margin: 15px;
+}

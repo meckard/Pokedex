@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 
 export const dexSlice = createSlice({
     name: 'dex',
     initialState: {
         dexUrl: [],
         error: false,
-        isLoading: false,
-        dexFull: []
+        isLoading: true,
+        dexFull: [],
+        offset: 0
     },
     reducers: {
         setDexState(state, action) {
@@ -18,7 +20,7 @@ export const dexSlice = createSlice({
         },
         getDexSuccess(state, action){
             state.isLoading = false
-            state.dexUrl = action.payload
+            state.dexUrl = [...state.dexUrl, action.payload]
         },
         getDexFailed(state){
             state.isLoading = false
@@ -30,24 +32,40 @@ export const dexSlice = createSlice({
         getDexFullSuccess(state, action) {
             state.isLoading = false
             state.dexFull = action.payload
+        },
+        getNextPage(state) {
+            state.offset +=60
+        },
+        setLoadingOn(state) {
+            state.isLoading = true
         }
     }
 })
 
-export async function getUrls (){
-    const url= 'https://pokeapi.co/api/v2/pokemon/?limit60'
+
+export async function getUrls (offset){
+    const url= `https://pokeapi.co/api/v2/pokemon/?limit=60&offset=${offset}`
     
     const response = await fetch(url)
     const json = await response.json()
+    let monList = []
+    for(let i =0; i < json.results.length; i++){
+       let mons = await fetch(json.results[i].url)
+       let monsJson = await mons.json()
+       monList.push(monsJson)
 
-    return json
+    }
+    return monList
+    console.log(monList)
+    
 }
 
-export const fetchUrls = () => async (dispatch) => {
+export const fetchUrls = (offset) => async (dispatch) => {
     try{
         dispatch(startGetDex())
-        let urls = await getUrls()
+        let urls = await getUrls(offset)
         dispatch(getDexSuccess(urls))
+        dispatch(getNextPage())
     } catch(error) {
         dispatch(getDexFailed())
     }
@@ -81,9 +99,13 @@ export const {
     getDexSuccess,
     getDexFullSuccess,
     getDexFailed,
+    getNextPage,
+    setLoadingOn
 } = dexSlice.actions
 
-export const selectDexState = (state) => state.dex.dex
+export const selectDexState = (state) => state.dex.dexUrl
 export const selectDexFullState = (state) => state.dex.dexFull
+export const selectOffset = (state) => state.dex.offset
+export const selectLoading = (state) => state.dex.isLoading
 
 export default dexSlice.reducer
