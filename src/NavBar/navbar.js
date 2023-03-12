@@ -11,7 +11,7 @@ export default function NavBar(){
                 <Link to='/dex'>Dex</Link>
             </li>
             <li>
-                <Link to='/generations'>Generations</Link>
+                <Link to='/gen'>Generations</Link>
             </li>
             <li>
                 <Link to='/types'>Types</Link>

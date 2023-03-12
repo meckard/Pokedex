@@ -1,44 +1,33 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectDexState, fetchUrls, selectOffset} from "../Redux/dexSlice";
-import './dex.css'
+import { selectGenState, fetchGenUrls, selectOffset } from "../Redux/genSlice";
+import './gen.css'
 
-export default function Dex () {
-    const dexState = useSelector(selectDexState)
+export default function Gen1 () {
+    const genState = useSelector(selectGenState)
     const offset = useSelector(selectOffset)
-    const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         if(loading) {
             setLoading(false);
             console.log(loading)
-            dispatch(fetchUrls(offset))
+            dispatch(fetchGenUrls())
         }
-    }, [loading, dispatch,])
-
-    
-
-    console.log(loading)
-    console.log(dexState)
-    console.log(offset)
+    }, [loading, dispatch])
 
     const handleClick = () => {
         setLoading(true)
     }
+    console.log(genState)
 
-    
-    
-
-
-    return(
-        dexState[0]?.[19].name?
+    return (
+        genState?.[30]?.name?
         <div>
-         <h1>The Dex</h1>
-            <div className='dex'>
-            {dexState.map ((page) => {
-                return(
-                page.map((mon) => {
+            <h1>Generation 1</h1>
+            <div className='generation'>
+                {genState.map((mon) => {
                     return (
                         <div className='pokemonCard' key={mon.id}>
                             <h2>{mon.name.toUpperCase()}</h2>
@@ -52,11 +41,12 @@ export default function Dex () {
                             </div>
                         </div>
                     )
-                })
-            )})}
+                })}
+
             </div>
-            <button onClick={handleClick}>show more</button>
         </div>
         :<div>Loading...</div>
     )
+
 }
+

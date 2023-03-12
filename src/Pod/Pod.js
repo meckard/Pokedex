@@ -1,5 +1,5 @@
 import { useSelector} from "react-redux"
-import { selectPodState, selectMon } from "../Redux/podSlice"
+import { selectPodState } from "../Redux/podSlice"
 import './Pod.css'
 import shiny from '../Images/5646579.png'
 

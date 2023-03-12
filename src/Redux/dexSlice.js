@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
 
 export const dexSlice = createSlice({
     name: 'dex',
@@ -26,19 +25,9 @@ export const dexSlice = createSlice({
             state.isLoading = false
             state.error = true
         },
-        setDexFullState(state, action) {
-            state.dexFull = action.payload
-        },
-        getDexFullSuccess(state, action) {
-            state.isLoading = false
-            state.dexFull = action.payload
-        },
         getNextPage(state) {
             state.offset +=60
         },
-        setLoadingOn(state) {
-            state.isLoading = true
-        }
     }
 })
 
@@ -56,7 +45,6 @@ export async function getUrls (offset){
 
     }
     return monList
-    console.log(monList)
     
 }
 
@@ -82,30 +70,16 @@ export async function getFullInfo () {
     return json
 }
 
-export const fetchFullDex = () => async (dispatch) => {
-    try{
-        dispatch(startGetDex())
-        let info = await getFullInfo()
-        dispatch(getDexFullSuccess(info))
-    } catch(error) {
-        dispatch(getDexFailed())
-    }
-}
-
 export const {
     setDexState,
-    setDexFullState,
     startGetDex,
     getDexSuccess,
-    getDexFullSuccess,
     getDexFailed,
     getNextPage,
     setLoadingOn
 } = dexSlice.actions
 
 export const selectDexState = (state) => state.dex.dexUrl
-export const selectDexFullState = (state) => state.dex.dexFull
 export const selectOffset = (state) => state.dex.offset
-export const selectLoading = (state) => state.dex.isLoading
 
 export default dexSlice.reducer

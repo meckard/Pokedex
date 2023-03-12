@@ -1,9 +1,10 @@
 import NavBar from './NavBar/navbar';
-import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route, Routes, BrowserRouter} from 'react-router-dom'
+import { createBrowserRouter, createRoutesFromElements, Route, Routes, BrowserRouter} from 'react-router-dom'
 import './App.css';
-import PokemonOfTheDay from './Pod/Pod';
 import Home from './home/home';
 import Dex from './dex/dex';
+import Gen1 from './gen/gen1';
+import GenHome from './gen/genhome';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,10 +19,11 @@ function App() {
     <div className='app'>
       <BrowserRouter router={router}>
         <NavBar />
-        <h1>Pokedex</h1>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='dex' element={<Dex/>}/>
+          <Route path='gen' element={<GenHome/>}/>
+          <Route path='gen/gen1' element={<Gen1/>}/>
         </Routes>
       </BrowserRouter>
     </div>
