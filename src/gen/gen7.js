@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectGenState, fetchGenUrls, clearGen} from "../Redux/genSlice";
 import './gen.css'
 
-export default function Gen1 () {
+export default function Gen7 () {
     const genState = useSelector(selectGenState)
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(true)
@@ -13,17 +13,16 @@ export default function Gen1 () {
             setLoading(false);
             dispatch(clearGen())
             console.log(loading)
-            dispatch(fetchGenUrls(151, 0))
+            dispatch(fetchGenUrls(88, 721))
         }
     }, [loading, dispatch])
-
 
     console.log(genState)
 
     return (
         genState?.[30]?.name?
         <div>
-            <h1>Generation 1</h1>
+            <h1>Generation 7</h1>
             <div className='generation'>
                 {genState.map((mon) => {
                     return (
@@ -47,4 +46,3 @@ export default function Gen1 () {
     )
 
 }
-

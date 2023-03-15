@@ -26,12 +26,15 @@ export const genSlice = createSlice({
         },
         getNextPage(state) {
             state.offset += 60
+        },
+        clearGen(state) {
+            state.genUrl = []
         }
     }
 })
 
-export async function getGenUrls (){
-    const url= `https://pokeapi.co/api/v2/pokemon/?limit=151`
+export async function getGenUrls (limit, offset){
+    const url= `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`
     
     const response = await fetch(url)
     const json = await response.json()
@@ -48,10 +51,10 @@ export async function getGenUrls (){
     
 }
 
-export const fetchGenUrls = () => async (dispatch) => {
+export const fetchGenUrls = (limit, offset) => async (dispatch) => {
     try{
         dispatch(startGetGen())
-        let urls = await getGenUrls()
+        let urls = await getGenUrls(limit, offset)
         dispatch(getGenSuccess(urls))
         dispatch(getNextPage())
     } catch(error) {
@@ -64,7 +67,8 @@ export const {
     getGenSuccess,
     getGenFailed,
     setGenState,
-    getNextPage
+    getNextPage,
+    clearGen
 } = genSlice.actions
 
 export const selectGenState = (state) => state.gen.genUrl

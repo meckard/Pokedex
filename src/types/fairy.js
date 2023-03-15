@@ -1,31 +1,31 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectGenState, fetchGenUrls, clearGen} from "../Redux/genSlice";
-import './gen.css'
+import { selectTypeState, fetchTypeUrls, clearType } from "../Redux/typeSlice";
+import './type.css'
 
-export default function Gen1 () {
-    const genState = useSelector(selectGenState)
+export default function Fairy () {
+    const typeState = useSelector(selectTypeState)
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         if(loading) {
             setLoading(false);
-            dispatch(clearGen())
             console.log(loading)
-            dispatch(fetchGenUrls(151, 0))
+            dispatch(clearType())
+            dispatch(fetchTypeUrls('fairy'))
         }
     }, [loading, dispatch])
 
 
-    console.log(genState)
+    console.log(typeState)
 
     return (
-        genState?.[30]?.name?
+        typeState?.[30]?.name?
         <div>
-            <h1>Generation 1</h1>
-            <div className='generation'>
-                {genState.map((mon) => {
+            <h1>Fairy</h1>
+            <div className='type'>
+                {typeState.map((mon) => {
                     return (
                         <div className='pokemonCard' key={mon.id}>
                             <h2>{mon.name.toUpperCase()}</h2>
@@ -47,4 +47,3 @@ export default function Gen1 () {
     )
 
 }
-
