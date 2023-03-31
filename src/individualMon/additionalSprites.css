@@ -1,0 +1,74 @@
+.additionalSprites li {
+    list-style: none;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.additionalSprites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.additionalSprites ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--border);
+    padding: 10px;
+    position: relative;
+    border-radius: 5px;
+}
+
+.react-tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--text);
+    color: var(--background);
+    width: 60%;
+    border: 3px solid var(--border);
+    margin: 10px;
+    height: 600px;
+    overflow: auto;
+    border-radius: 3px;
+}
+
+.tabContent {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    justify-content: center;
+    align-self: center;
+}
+
+.react-tabs p {
+    font-weight: bold;
+}
+
+.react-tabs__tab-panel {
+    display: flex;
+}
+  
+  .react-tabs::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  .react-tabs::-webkit-scrollbar-track {
+    background: var(--border);
+    border-radius: 10px;
+  }
+  
+  .react-tabs::-webkit-scrollbar-thumb {
+    background: var(--background);
+    border-radius: 10px;
+  }
+
+.react-tabs__tab--selected {
+    background-color: var(--background);
+    color: var(--text);
+    border-radius: 5px;
+    padding: 2px;
+}
+

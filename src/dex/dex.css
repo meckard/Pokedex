@@ -38,3 +38,7 @@
     font-weight: bold;
     margin: 5px;
 }
+
+.dex a {
+    text-decoration: none;
+}

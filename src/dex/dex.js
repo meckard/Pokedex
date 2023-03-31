@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { selectDexState, fetchUrls, selectOffset} from "../Redux/dexSlice";
 import './dex.css'
 
@@ -34,12 +35,14 @@ export default function Dex () {
     return(
         dexState[0]?.[19].name?
         <div>
+
          <h1>The Dex</h1>
             <div className='dex'>
             {dexState.map ((page) => {
                 return(
                 page.map((mon) => {
                     return (
+                        <Link to={`${mon.name}`}>
                         <div className='pokemonCard' key={mon.id}>
                             <h2>{mon.name.toUpperCase()}</h2>
                             <p className='number'># {mon.id}</p>
@@ -51,6 +54,7 @@ export default function Dex () {
                             : ''}
                             </div>
                         </div>
+                        </Link>
                     )
                 })
             )})}

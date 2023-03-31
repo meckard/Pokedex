@@ -1,0 +1,40 @@
+.sprites{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--background);
+}
+
+.sprites div {
+    display: flex;
+    background-color: var(--text);
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.defaultSprites {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid var(--border);
+}
+
+.femaleSprites {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid var(--border);
+}
+
+.shinySprites {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid var(--border);
+}
+
+.shinyFemaleSprites {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid var(--border);
+}

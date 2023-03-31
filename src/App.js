@@ -30,6 +30,7 @@ import Psychic from './types/psychic';
 import Rock from './types/rock';
 import Steel from './types/steel';
 import Water from './types/water';
+import Mon from './individualMon/mon';
 import GenHome from './gen/genhome';
 import TypeHome from './types/typeHome';
 
@@ -78,11 +79,12 @@ function App() {
           <Route path='types/rock' element={<Rock/>}/>
           <Route path='types/steel' element={<Steel/>}/>
           <Route path='types/water' element={<Water/>}/>
+          <Route path='dex/:monName' element={<Mon/>}/>
         </Routes>
       </BrowserRouter>
     </div>
   )
-  
 }
+
 
 export default App;
