@@ -1,0 +1,49 @@
+.evoDeets {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--border);
+    background-color: var(--text);
+    color: var(--background);
+    font-weight: bold;
+    text-decoration: underline;
+    box-shadow: 5px 5px 5px var(--border)
+}
+
+.evo1 {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.evo2 {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.evo2 p {
+    margin: 20px;
+}
+
+.evolution {
+ height: auto;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+.evo1 p {
+    margin: 20px;
+}
+
+.mon1 {
+    padding: 30px;
+}
+
+.name {
+    font-weight: bold;
+}

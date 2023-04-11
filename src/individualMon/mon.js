@@ -23,7 +23,7 @@ export default function Mon () {
             dispatch(fetchMonUrls(mon.monName))
             dispatch(fetchMonSpecies(mon.monName))
         }
-    }, [loading, dispatch])
+    }, [loading, dispatch, mon.monName])
 
 
     return (
