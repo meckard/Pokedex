@@ -1,5 +1,6 @@
 import { useSelector} from "react-redux"
 import { selectPodState } from "../Redux/podSlice"
+import { Link } from "react-router-dom"
 import './Pod.css'
 import shiny from '../Images/5646579.png'
 
@@ -11,6 +12,7 @@ export default function PokemonOfTheDay () {
 
 
   return (
+    <Link to={`/dex/${podState.name}`}>
     <div className='pod'>
         <h2>Pokemon of the Day</h2>
         <h3>{podState.name}</h3>
@@ -28,6 +30,7 @@ export default function PokemonOfTheDay () {
           </ul>
         </div>
     </div>
+    </Link>
   )
 
 

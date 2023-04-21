@@ -4,11 +4,11 @@ import { useEffect,} from "react";
 import { Link } from "react-router-dom";
 import './evolution.css'
 
-export default function Evolution () {
+export default function Evolution (params) {
    const evoState = useSelector(selectEvo)
    const speciesState = useSelector(selectSpecies)
    const dispatch = useDispatch()
-   console.log(evoState)
+   
 
    useEffect(() => {
     dispatch(clearEvo)
@@ -16,17 +16,13 @@ export default function Evolution () {
 
 }, [dispatch, speciesState?.evolution_chain?.url] )
 
-console.log(evoState.evolves_to)
-
 const evolution = () => {
     if(evoState.evolves_to) {
     return evoState.evolves_to.map((mon1) => {
-        console.log(mon1.evolution_details)
         return mon1.evolution_details.map((con1) => {
-            console.log(Object.entries(con1))
             return (
                 <div className='evo1'>    
-                <Link to={`/dex/${mon1.species.name}`}><p className='name'>{mon1.species.name}</p></Link>
+                <Link to={`/dex/${mon1.species.name}`} onClick={params.loading(true)}><p className='name'>{mon1.species.name}</p></Link>
                 <p>{condition(Object.entries(con1))}</p>
                 </div>
                 )
@@ -39,12 +35,10 @@ const evolution = () => {
 const evolution2 = () => {
     if(evoState.evolves_to[0].evolves_to) {
        return evoState.evolves_to[0].evolves_to.map((mon2) => {
-            console.log(mon2.evolution_details)
             return mon2.evolution_details.map((con2) => {
-                console.log(Object.entries(con2))
                 return (
                     <div className="evo2">
-                        <Link to={mon2.species.name}><p className='name2'>{mon2.species.name}</p></Link>
+                        <Link to={`/dex/${mon2.species.name}`} onClick={params.loading(true)}><p className='name2'>{mon2.species.name}</p></Link>
                         <p>{condition(Object.entries(con2))}</p>
                     </div>
                     )
@@ -56,11 +50,9 @@ const evolution2 = () => {
 
 const condition = (arr) => {
  let goodArr = []
- console.log(arr)
  for(let i =0; i< arr.length; i++) {
      if(arr[i][1]) {
          goodArr.push(arr[i])
-         console.log(goodArr)
      }
  }
  let conditions = []
@@ -128,7 +120,6 @@ const condition = (arr) => {
         
  }
 }
-console.log(conditions)
 return conditions
 }
 

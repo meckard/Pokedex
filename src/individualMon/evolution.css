@@ -17,6 +17,15 @@
     align-items: center;
 }
 
+.mon1 a {
+    text-decoration: none;
+    color: var(--background)
+}
+
+.mon1 {
+    margin: 20px;
+}
+
 .evo2 {
     display: flex;
     flex-direction: row-reverse;
@@ -40,10 +49,37 @@
     margin: 20px;
 }
 
-.mon1 {
-    padding: 30px;
+.mon1 p {
+    padding: 20px}
+
+.mon2 a {
+    color: var(--background)
+}
+
+.mon3 a {
+    color: var(--background)
 }
 
 .name {
     font-weight: bold;
+}
+
+.evoDeets a:hover {
+    background-color: var(--background);
+    color: var(--text);
+    border-radius: 5px;
+}
+
+.mon1 :hover {
+    background-color: var(--background);
+    color: var(--text);
+    border-radius: 5px;
+}
+
+.mon2 {
+    margin: 20px
+}
+
+.mon3 {
+    margin: 20px;
 }

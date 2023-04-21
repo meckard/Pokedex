@@ -35,6 +35,10 @@
     box-shadow: 2px 5px 5px var(--border);
 }
 
+.type a {
+    text-decoration: none;
+}
+
 .pokemonCard img {
     height: 150px;
     width: 150px;

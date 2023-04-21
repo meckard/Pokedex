@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import { selectTypeState, fetchTypeUrls, clearType } from "../Redux/typeSlice";
+import { Link, useParams } from "react-router-dom";
 import './type.css'
 
-export default function Bug () {
+export default function Type () {
     const typeState = useSelector(selectTypeState)
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(true)
+    const type = useParams()
 
     useEffect(() => {
         if(loading) {
             setLoading(false);
             console.log(loading)
             dispatch(clearType())
-            dispatch(fetchTypeUrls('bug'))
+            dispatch(fetchTypeUrls(type.type))
         }
     }, [loading, dispatch])
+    console.log(type)
 
 
     console.log(typeState)
@@ -23,10 +26,11 @@ export default function Bug () {
     return (
         typeState?.[30]?.name?
         <div>
-            <h1>Bug</h1>
+            <h1>{type.type}</h1>
             <div className='type'>
                 {typeState.map((mon) => {
                     return (
+                        <Link to={`/dex/${mon.name}`}>
                         <div className='pokemonCard' key={mon.id}>
                             <h2>{mon.name.toUpperCase()}</h2>
                             <p className='number'># {mon.id}</p>
@@ -38,6 +42,7 @@ export default function Bug () {
                             : ''}
                             </div>
                         </div>
+                        </Link>
                     )
                 })}
 

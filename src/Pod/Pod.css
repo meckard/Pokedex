@@ -11,6 +11,9 @@
     border-radius: 5px;
     box-shadow: 2px 2px 5px var(--border);
 }
+ a {
+    text-decoration: none;
+}
 
 .pod h2 {
     text-decoration: underline;

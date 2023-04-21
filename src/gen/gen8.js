@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectGenState, fetchGenUrls, clearGen} from "../Redux/genSlice";
 import './gen.css'
@@ -27,6 +28,7 @@ export default function Gen8 () {
             <div className='generation'>
                 {genState.map((mon) => {
                     return (
+                        <Link to={`/dex/${mon.name}`}>
                         <div className='pokemonCard' key={mon.id}>
                             <h2>{mon.name.toUpperCase()}</h2>
                             <p className='number'># {mon.id}</p>
@@ -38,6 +40,7 @@ export default function Gen8 () {
                             : ''}
                             </div>
                         </div>
+                        </Link>
                     )
                 })}
 

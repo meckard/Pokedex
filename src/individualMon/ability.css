@@ -1,0 +1,20 @@
+.ability {
+    background-color: var(--text);
+    color: var(--background);
+    border: 3px solid var(--border);
+    box-shadow: 5px 5px 5px var(--border);
+    margin:20px;
+}
+
+.abilComp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px
+}
+
+.abilName {
+    font-weight: bold;
+}

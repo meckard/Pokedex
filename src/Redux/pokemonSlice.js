@@ -6,6 +6,7 @@ export const pokemonSlice = createSlice({
         monSpecies: [],
         monUrl: [],
         evolution: [],
+        ability: [],
         error: false,
         isLoading: true,
     },
@@ -33,6 +34,9 @@ export const pokemonSlice = createSlice({
         },
         clearEvo(state) {
             state.evolution = []
+        },
+        setAbility(state, action) {
+            state.ability = action.payload
         }
     }
 })
@@ -65,6 +69,17 @@ export async function getEvos (evoUrl){
 
    }
 
+export async function getAbilities (abilUrls) {
+    let abList = []
+    for(let abilUrl of abilUrls) {
+        console.log(abilUrl)
+        let response = await fetch(abilUrl)
+        let json = await response.json()
+        abList.push(json)
+    }
+    return abList
+}
+
 export const fetchMonUrls = (mon) => async (dispatch) => {
     try{
         dispatch(startGetMon())
@@ -95,6 +110,15 @@ export const fetchEvos = (evoUrl) => async (dispatch) => {
     }
 }
 
+export const fetchAbilites = (abilUrl) => async (dispatch) => {
+    try {
+        let abil = await getAbilities(abilUrl)
+        dispatch(setAbility(abil))
+    } catch(error) {
+        dispatch(getMonFailed())
+    }
+}
+
 
 export const {
     setMonState,
@@ -104,10 +128,12 @@ export const {
     setEvolution,
     setMonSpecies,
     clearEvo,
+    setAbility
 } = pokemonSlice.actions
 
 export const selectMonState = (state) => state.pokemon.monUrl
 export const selectEvo = (state) => state.pokemon.evolution
 export const selectSpecies = (state) => state.pokemon.monSpecies
+export const selectAbility = (state) => state.pokemon.ability
 
 export default pokemonSlice.reducer

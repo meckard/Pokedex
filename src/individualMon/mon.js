@@ -6,6 +6,8 @@ import Evolution from "./evolution";
 import './mon.css'
 import DefaultSprites from "./defaultSprites";
 import AdditionalSprites from "./additionalSprites";
+import Abilities from "./abilities";
+import Moves from "./moves";
 
 export default function Mon () {
     const monState = useSelector(selectMonState)
@@ -13,13 +15,10 @@ export default function Mon () {
     const [loading, setLoading] = useState(true)
     let mon = useParams()
 
-    console.log(mon)
-
 
     useEffect(() => {
         if(loading) {
             setLoading(false);
-            console.log(loading)
             dispatch(fetchMonUrls(mon.monName))
             dispatch(fetchMonSpecies(mon.monName))
         }
@@ -32,8 +31,10 @@ export default function Mon () {
             <h1>{monState.name}</h1>
             <h2>#{monState.id}</h2>
             <DefaultSprites/>
-            <Evolution/>
+            <Evolution loading={setLoading}/>
             <AdditionalSprites/>
+            <Abilities/>
+            <Moves/>
         </div>
         :<div>Loading...</div>
     )

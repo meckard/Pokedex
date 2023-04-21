@@ -1,0 +1,59 @@
+.move {
+    border: 3px solid var(--border);
+    margin: 20px;
+    background-color: var(--text);
+    color: var(--background)
+}
+
+.details{
+    display:flex;
+    justify-content: center;
+    align-items: cen;
+    flex-wrap: wrap;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.moveName {
+    font-weight: bold;
+}
+
+.version {
+    font-weight: bold;
+}
+
+.Collapsible span {
+    font-weight: bold;
+}
+
+.Collapsible {
+    padding: 20px;
+}
+
+.Collapsible__trigger {
+    display: block;
+  font-weight: 400;
+  text-decoration: none;
+  position: relative;
+  padding: 10px;
+}
+
+.Collapsible__trigger:after {
+    content: 'v';
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: block;
+    transition: transform 300ms;
+}
+
+.is-open:after {
+    transform: rotateZ(180deg);
+}
+
+
+
