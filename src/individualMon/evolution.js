@@ -29,7 +29,9 @@ const evolution = () => {
            })
         })
 
-    } 
+    } else {
+        return <p>This pokemon does not evolve</p>
+    }
 }
 
 const evolution2 = () => {
@@ -44,6 +46,8 @@ const evolution2 = () => {
                     )
                })
             })
+    } else {
+        return <p>This Pokemon does not evolve</p>
     }
 }
 
@@ -135,9 +139,11 @@ return conditions
                 <div className='mon2'>
                     <div className='evoCon1'>{evolution()}</div>
                 </div>
+                {evoState?.evolves_to[0]?
                 <div className='mon3'>
                     <div className='evoCon2'>{evolution2()}</div>
                 </div>
+                :''}
             </div>
         </div>
         :<p>Loading...</p>

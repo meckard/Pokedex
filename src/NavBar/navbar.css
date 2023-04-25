@@ -25,3 +25,10 @@ ul.navBar li a:hover {
     background-color: var(--border);
     transition: background-color 0.20s;
 }
+
+@media screen and (max-width: 600px) {
+
+    ul.navBar li a {
+        font-size: 1rem;
+    }
+}
